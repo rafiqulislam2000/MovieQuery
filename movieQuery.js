@@ -8,26 +8,44 @@ var movieList = [
 ];
 
 function getMovieTitle( index ){
-  //add code
+  return movieList[index].title;
 }
 
 console.log(getMovieTitle(3));
 
 function addMovie( movie ){
-  //add code
+  movieList.push(movie);
+
+
+  return JSON.stringify(movieList);
 }
 
-var newMovie = {};
+var newMovie = { title: "How to train your dragon", year: "2015", length: 130, rating: "7.8", genre: "animation" };
 console.log(addMovie(newMovie));
 
 function movieByRating(){
-  //add code
+  
+  movieList.sort(function(a, b) { return a.rating - b.rating });
+  return JSON.stringify(movieList);
+  
+
 }
 
 console.log(movieByRating());
 
 function findByTitle( title ){
-  //add code
+  var mName = [];
+  var mTitle;
+  for(var i = 0; i < movieList.length; i++){
+    mTitle = movieList[i].title;
+    n = mTitle.search(title);
+
+    if(n!=-1){
+      mName[i] = movieList[i];
+    }
+
+  }
+  return JSON.stringify(mName);
 }
 
-console.log(findByTitle("matrix"));
+console.log(findByTitle("Matrix"));
